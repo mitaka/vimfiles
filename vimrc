@@ -24,7 +24,7 @@ set updatecount=0
 set mousehide
 
 "Use the mouse everywhere
-set mouse=a
+"set mouse=a
 
 "Highlight all matches to the current search
 set hlsearch
@@ -43,7 +43,7 @@ syntax on
 set ruler
 
 "Display line numbers
-set number
+"set number
 
 "Highlight cursor line
 set cursorline

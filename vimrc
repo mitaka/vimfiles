@@ -85,33 +85,39 @@ set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 "Save with F2
-nmap <F2> :w!<CR>
-imap <F2> <Esc><F2>
+nmap <F2> :update!<CR>
+imap <F2> <C-O>:update!<CR>
 
 map <C-F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 "Switch mouse off
 map <F9> :set mouse=""<CR>:set nu!<CR>
-imap <F9> <F2><F9>
+imap <F9> <Esc><F2><F9>
 "Switch mouse on
 map <F8> :set mouse=a<CR>:set nu<CR>
-imap <F8> <F2><F8>
+imap <F8> <Esc><F2><F8>
 
-"Clear last search
-let @/ = ""
-nmap <F12> :let @/=""<CR>
-imap <F12> <Esc><F12>
+"Remove highlight from last search
+nohl
+nmap <F12> :nohl<CR>
+imap <F12> <C-O><F12>
 
-nmap <F7> :set paste!<CR>
-imap <F7> <ESC><F7>
+set pastetoggle=<F7>
 
 map <F3> :NERDTreeToggle<CR>
 imap <F3> <ESC><F3>
 
+let mapleader=','
+vnoremap <Leader>s :sort<CR>
+nnoremap <Leader>o :CtrlP<CR>
+
+" Friendlier indentation
+vnoremap < <gv
+vnoremap > >gv
+
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-let mapleader=','
 "if exists(":Tabularize")
 	nmap <Leader>a= :Tabularize /=<CR>
 	vmap <Leader>a= :Tabularize /=<CR>
@@ -133,3 +139,6 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
   \| exe "normal! g'\"" | endif
 
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+highlight RedundantWhitespace ctermbg=red guibg=red
+match RedundantWhitespace /\s\+$\| \+\ze\t/

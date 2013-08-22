@@ -34,3 +34,9 @@
 [submodule "bundle/vim-task"]
 	path = bundle/vim-task
 	url = https://github.com/samsonw/vim-task.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git

@@ -34,7 +34,7 @@ set incsearch
 
 "Use smart case search
 set ignorecase
-set smartcase 
+set smartcase
 
 "Enable syntax highlighting
 syntax on
@@ -84,18 +84,27 @@ call pathogen#infect()
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
+function ToggleCopyMode()
+	if &mouse =~ "a"
+		set mouse=""
+	else
+		set mouse=a
+	endif
+	set nu!
+endfunction
+
 "Save with F2
 nmap <F2> :update!<CR>
 imap <F2> <C-O>:update!<CR>
 
 map <C-F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-"Switch mouse off
-map <F9> :set mouse=""<CR>:set nu!<CR>
-imap <F9> <Esc><F2><F9>
-"Switch mouse on
-map <F8> :set mouse=a<CR>:set nu<CR>
-imap <F8> <Esc><F2><F8>
+"Toggle the taglist
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+"Toggle copy mode
+map <F9> :call ToggleCopyMode()<CR>
+imap <F9> <Esc><F9>
 
 "Remove highlight from last search
 nohl
@@ -133,8 +142,7 @@ au BufNewFile,BufRead *.plpgsql set filetype=plsql
 au BufNewFile,BufRead *.pgsql set filetype=plsql
 au BufRead,BufNewFile *.wiki                set filetype=mediawiki
 
-" Uncomment the following to have Vim jump to the last position when                                                       
-" reopening a file
+" Uncomment the following to have Vim jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
   \| exe "normal! g'\"" | endif
 

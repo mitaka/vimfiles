@@ -43,3 +43,6 @@
 [submodule "bundle/vim-syntax-vcl"]
 	path = bundle/vim-syntax-vcl
 	url = https://github.com/pld-linux/vim-syntax-vcl.git
+[submodule "bundle/vim-tlib"]
+	path = bundle/vim-tlib
+	url = https://github.com/tomtom/tlib_vim.git

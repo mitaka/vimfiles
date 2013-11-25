@@ -13,6 +13,7 @@ set nopaste
 "Set indentation rules
 set shiftwidth=4
 set ts=4
+set expandtab
 
 "Show the current mode on the last line
 set showmode

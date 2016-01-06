@@ -95,8 +95,8 @@ function ToggleCopyMode()
 endfunction
 
 "Save with F2
-nmap <F2> :update!<CR>
-imap <F2> <C-O>:update!<CR>
+nmap <F2> :tabnew<CR>
+imap <F2> <ESC>:tabnew<CR>
 
 map <C-F11> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
@@ -157,3 +157,5 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 highlight RedundantWhitespace ctermbg=red guibg=red
 match RedundantWhitespace /\s\+$\| \+\ze\t/
+
+let g:syntastic_perl_perlcritic_thres=3

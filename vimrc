@@ -48,7 +48,7 @@ set ruler
 
 "Highlight cursor line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=darkgrey ctermfg=none guibg=darkgrey guifg=none
+hi CursorLine cterm=NONE ctermbg=darkgrey ctermfg=NONE guibg=darkgrey guifg=NONE
 
 "Start spell checking
 set spell spelllang=bg,en_us
